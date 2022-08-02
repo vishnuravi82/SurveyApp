@@ -4,11 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
-import android.text.TextUtils;
 import android.util.Log;
 import android.util.Xml;
 import android.view.LayoutInflater;
@@ -28,12 +26,10 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.labournet.surveyapp.R;
 import com.labournet.surveyapp.fragment.DatePickerFragment4;
 import com.labournet.surveyapp.model.CandStatusHistoryModel;
-import com.labournet.surveyapp.model.DefaultResponse;
 import com.labournet.surveyapp.model.FamilyMemberModel;
 import com.labournet.surveyapp.model.FileModel;
 import com.labournet.surveyapp.model.SubmitFamily;
 import com.labournet.surveyapp.util.CustomTypefaceSpan;
-import com.labournet.surveyapp.util.Database;
 import com.labournet.surveyapp.util.InternetStatus;
 import com.labournet.surveyapp.util.Keys;
 import com.labournet.surveyapp.util.Preferences;
@@ -92,7 +88,7 @@ public class FamilyDetailActivity  extends AppCompatActivity implements View.OnC
     ArrayAdapter<String> MnscardAdapter,disAdt,occupationadt,qualificationAdt,genderAdt;
     private LinearLayout ll1, container;
     ArrayList<FamilyMemberModel> familyModels = new ArrayList<>();
-    private Database db;
+
     private DatePickerFragment4 dpf;
     private Preferences prefs;
     @Override
@@ -107,7 +103,7 @@ public class FamilyDetailActivity  extends AppCompatActivity implements View.OnC
     }
 
     private void Assign() {
-        db = new Database(this);
+
         sp1=findViewById(R.id.sp_Mnrg);
 
        ;submit=findViewById(R.id.btn_submit);;
@@ -160,30 +156,7 @@ public class FamilyDetailActivity  extends AppCompatActivity implements View.OnC
 
     }
 
-    private void uploadStatusHistory(String xmlPath, ArrayList<FamilyMemberModel> familyModels) {
-        ArrayList<CandStatusHistoryModel> temp = db.getCandStatusHistoryToUpload(prefs.getInt(Keys.PREFS_USER_ID));
-        if (temp.size() > 0) {
-            List<String> jsonArray = new ArrayList<>();
-            for (int i = 0; i < temp.size(); i++) {
-                JSONObject jsonData = new JSONObject();
-                try {
-                    jsonData.put("candidate_id", temp.get(i).getCandidateId());
-                    jsonData.put("activity_status_id", temp.get(i).getStatusId());
-                    jsonData.put("reason", temp.get(i).getReason());
-                    jsonData.put("date", temp.get(i).getDateTime());
-                    jsonData.put("remarks", temp.get(i).getRemarks());
-                    jsonData.put("latitude", temp.get(i).getLatitude());
-                    jsonData.put("longitude", temp.get(i).getLongitude());
-                    jsonData.put("device_date", temp.get(i).getTimestamp());
-                    jsonArray.add(jsonData.toString());
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
 
-        }
-        prepareXml(xmlPath,familyModels);
-    }
     public void prepareXml(String path, ArrayList<FamilyMemberModel> candArray) {
 //        if (cl.isShowing()) cl.dismiss();
        
@@ -522,9 +495,10 @@ public class FamilyDetailActivity  extends AppCompatActivity implements View.OnC
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_submit:
-              //  xmlPath = Utils.getFileName(String.valueOf(prefs.getInt(Keys.PREFS_USER_ID)), "Bulk");
-               // createArray();
-               // uploadStatusHistory(xmlPath, familyModels);
+               xmlPath = Utils.getFileName(String.valueOf(prefs.getInt(Keys.PREFS_USER_ID)), "Bulk");
+                createArray();
+                prepareXml(xmlPath,familyModels);
+
                /* login();*/
                 login();
 
@@ -539,9 +513,7 @@ public class FamilyDetailActivity  extends AppCompatActivity implements View.OnC
 
     private void createArray() {
         if (familyModels.size() == 0) {
-           /* name.setText("Added: " + etMemberName.getText().toString().trim());
-            name.setVisibility(View.VISIBLE);*/
-            /* ll1.setVisibility(View.GONE);*/
+
 
             FamilyMemberModel familyMemberModel = new FamilyMemberModel();
             familyMemberModel.setMemberName(name_et.getText().toString().trim());
@@ -549,10 +521,10 @@ public class FamilyDetailActivity  extends AppCompatActivity implements View.OnC
             familyMemberModel.setRelation(relation_et.getText().toString().trim());
 
             familyMemberModel.setOccupation(sp6.getSelectedItemPosition() < 1 ? "" : sp6.getSelectedItem().toString());
-            Log.e("occupation",""+ sp6.getSelectedItem().toString());
-            //familyMemberModel.setSalutation(spSalutation.getSelectedItemPosition() < 1 ? "" : spSalutation.getSelectedItem().toString());
+
+
             familyMemberModel.setGender(sp3.getSelectedItemPosition() < 1 ? "" : sp3.getSelectedItem().toString());
-            Log.e("gender",""+ relation_et.getText().toString().trim());
+
             familyMemberModel.setEdnQuali(sp5.getSelectedItemPosition() < 1 ? "" : sp5.getSelectedItem().toString());
             familyMemberModel.setDis(sp4.getSelectedItemPosition() < 1 ? "" : sp4.getSelectedItem().toString());
 
@@ -571,20 +543,17 @@ public class FamilyDetailActivity  extends AppCompatActivity implements View.OnC
 
 
             names.get(names.size() - 1).setText("Added: " + etMemberNames.get(etMemberNames.size() - 1).getText().toString().trim());
-           /* ll1s.get(ll1s.size() - 1).setVisibility(View.GONE);
-            names.get(names.size() - 1).setVisibility(View.VISIBLE);*/
+
             FamilyMemberModel familyMemberModel = new FamilyMemberModel();
             familyMemberModel.setMemberName(etMemberNames.get(etMemberNames.size() - 1).getText().toString().trim());
             familyMemberModel.setAge(etAges.get(etAges.size() - 1).getText().toString().trim());
-            // familyMemberModel.setAnualIncome(etIncome.get(etIncome.size() - 1).getText().toString().trim());
-            // familyMemberModel.setPrimaryCont(etPrimaryConts.get(etPrimaryConts.size() - 1).getText().toString().trim());
-            // familyMemberModel.setEmail(etEmails.get(etEmails.size() - 1).getText().toString().trim());
+
             familyMemberModel.setOccupation(spOcuupation.get(spOcuupation.size() - 1).getSelectedItemPosition() < 1 ? "" : spOcuupation.get(spOcuupation.size() - 1).getSelectedItem().toString());
-            // familyMemberModel.setSalutation(spSalutations.get(spSalutations.size() - 1).getSelectedItemPosition() < 1 ? "" : spSalutations.get(spSalutations.size() - 1).getSelectedItem().toString());
+
             familyMemberModel.setGender(spGenders.get(spGenders.size() - 1).getSelectedItemPosition() < 1 ? "" : spGenders.get(spGenders.size() - 1).getSelectedItem().toString());
             familyMemberModel.setEdnQuali(spEdnQualis.get(spEdnQualis.size() - 1).getSelectedItemPosition() < 1 ? "" : spEdnQualis.get(spEdnQualis.size() - 1).getSelectedItem().toString());
             familyMemberModel.setRelation(spcard.get(spcard.size() - 1).getSelectedItemPosition() < 1 ? "" : spcard.get(spcard.size() - 1).getSelectedItem().toString());
-           // familyMemberModel.setDob(dateDobs.get(dateDobs.size() - 1).getText().toString().contains("Choose") ? "" : dateDobs.get(dateDobs.size() - 1).getText().toString());
+
             familyModels.add(familyMemberModel);
         }
     }
@@ -610,9 +579,7 @@ public class FamilyDetailActivity  extends AppCompatActivity implements View.OnC
         }
 */
         if (familyModels.size() == 0) {
-           /* name.setText("Added: " + etMemberName.getText().toString().trim());
-            name.setVisibility(View.VISIBLE);*/
-           /* ll1.setVisibility(View.GONE);*/
+
 
             FamilyMemberModel familyMemberModel = new FamilyMemberModel();
             familyMemberModel.setMemberName(name_et.getText().toString().trim());
@@ -620,11 +587,11 @@ public class FamilyDetailActivity  extends AppCompatActivity implements View.OnC
             familyMemberModel.setRelation(relation_et.getText().toString().trim());
 
             familyMemberModel.setOccupation(sp6.getSelectedItemPosition() < 1 ? "" : sp6.getSelectedItem().toString());
-            //familyMemberModel.setSalutation(spSalutation.getSelectedItemPosition() < 1 ? "" : spSalutation.getSelectedItem().toString());
+
             familyMemberModel.setGender(sp3.getSelectedItemPosition() < 1 ? "" : sp3.getSelectedItem().toString());
             familyMemberModel.setEdnQuali(sp5.getSelectedItemPosition() < 1 ? "" : sp5.getSelectedItem().toString());
             familyMemberModel.setRelation(sp1.getSelectedItemPosition() < 1 ? "" : sp1.getSelectedItem().toString());
-           // familyMemberModel.setDob(Age_et.getText().toString().contains("Choose") ? "" : Age_et.getText().toString());
+
             familyModels.add(familyMemberModel);
         } else if (etMemberNames.size()>0){
             Log.e("ee", etMemberNames.size() + etMemberNames.get(etMemberNames.size() - 1).getText().toString().trim());
@@ -636,20 +603,17 @@ public class FamilyDetailActivity  extends AppCompatActivity implements View.OnC
 
 
             names.get(names.size() - 1).setText("Added: " + etMemberNames.get(etMemberNames.size() - 1).getText().toString().trim());
-           /* ll1s.get(ll1s.size() - 1).setVisibility(View.GONE);
-            names.get(names.size() - 1).setVisibility(View.VISIBLE);*/
+
             FamilyMemberModel familyMemberModel = new FamilyMemberModel();
             familyMemberModel.setMemberName(etMemberNames.get(etMemberNames.size() - 1).getText().toString().trim());
             familyMemberModel.setAge(etAges.get(etAges.size() - 1).getText().toString().trim());
-           // familyMemberModel.setAnualIncome(etIncome.get(etIncome.size() - 1).getText().toString().trim());
-           // familyMemberModel.setPrimaryCont(etPrimaryConts.get(etPrimaryConts.size() - 1).getText().toString().trim());
-           // familyMemberModel.setEmail(etEmails.get(etEmails.size() - 1).getText().toString().trim());
+
             familyMemberModel.setOccupation(spOcuupation.get(spOcuupation.size() - 1).getSelectedItemPosition() < 1 ? "" : spOcuupation.get(spOcuupation.size() - 1).getSelectedItem().toString());
-           // familyMemberModel.setSalutation(spSalutations.get(spSalutations.size() - 1).getSelectedItemPosition() < 1 ? "" : spSalutations.get(spSalutations.size() - 1).getSelectedItem().toString());
+
             familyMemberModel.setGender(spGenders.get(spGenders.size() - 1).getSelectedItemPosition() < 1 ? "" : spGenders.get(spGenders.size() - 1).getSelectedItem().toString());
             familyMemberModel.setEdnQuali(spEdnQualis.get(spEdnQualis.size() - 1).getSelectedItemPosition() < 1 ? "" : spEdnQualis.get(spEdnQualis.size() - 1).getSelectedItem().toString());
             familyMemberModel.setRelation(spcard.get(spcard.size() - 1).getSelectedItemPosition() < 1 ? "" : spcard.get(spcard.size() - 1).getSelectedItem().toString());
-           // familyMemberModel.setDob(dateDobs.get(dateDobs.size() - 1).getText().toString().contains("Choose") ? "" : dateDobs.get(dateDobs.size() - 1).getText().toString());
+
             familyModels.add(familyMemberModel);
         }
         final View addView = layoutInflater.inflate(R.layout.item_add_family, null);
@@ -709,9 +673,7 @@ public class FamilyDetailActivity  extends AppCompatActivity implements View.OnC
             FamilyMemberModel fm = candArray.get(i);
 
 
-                //family details
-               // ArrayList<FamilyMemberModel> fm = db.getFamilyMembers(prefs.getInt(Keys.PREFS_USER_ID), 1);
-               // Log.e("fmily_db",""+fm.size());
+
             Log.e("cand_db",""+candArray.size());
                 for (int x = 0; x < candArray.size(); x++) {
                     xmlSerializer.startTag("", "family_details");

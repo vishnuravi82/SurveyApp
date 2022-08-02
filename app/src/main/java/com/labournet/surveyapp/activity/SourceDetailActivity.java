@@ -21,12 +21,10 @@ import androidx.appcompat.widget.AppCompatButton;
 import com.labournet.surveyapp.R;
 import com.labournet.surveyapp.fragment.DatePickerFragment4;
 import com.labournet.surveyapp.model.CandStatusHistoryModel;
-import com.labournet.surveyapp.model.FamilyMemberModel;
 import com.labournet.surveyapp.model.FileModel;
 import com.labournet.surveyapp.model.SubmitFamily;
 import com.labournet.surveyapp.model.WaterSource;
 import com.labournet.surveyapp.util.CustomTypefaceSpan;
-import com.labournet.surveyapp.util.Database;
 import com.labournet.surveyapp.util.InternetStatus;
 import com.labournet.surveyapp.util.Keys;
 import com.labournet.surveyapp.util.Preferences;
@@ -58,7 +56,7 @@ import retrofit2.Retrofit;
 public class SourceDetailActivity extends AppCompatActivity implements View.OnClickListener {
     Spinner sp;
     private AppCompatButton submit;
-    private Database db;
+
     private DatePickerFragment4 dpf;
     private Preferences prefs;
     String[] gender = {"Male", "Female"};
@@ -84,7 +82,7 @@ public class SourceDetailActivity extends AppCompatActivity implements View.OnCl
 
     private void Assign() {
         //sp1=findViewById(R.id.sp_cast);
-        ; db = new Database(this);
+
         prefs = new Preferences(this);
         sp=findViewById(R.id.sp_source);
         IrrigationText=findViewById(R.id.et_irigation);
@@ -99,30 +97,7 @@ public class SourceDetailActivity extends AppCompatActivity implements View.OnCl
         submit.setOnClickListener(this);
 
     }
-    private void uploadStatusHistory(String xmlPath, ArrayList<WaterSource> waterModels) {
-        ArrayList<CandStatusHistoryModel> temp = db.getCandStatusHistoryToUpload(prefs.getInt(Keys.PREFS_USER_ID));
-        if (temp.size() > 0) {
-            List<String> jsonArray = new ArrayList<>();
-            for (int i = 0; i < temp.size(); i++) {
-                JSONObject jsonData = new JSONObject();
-                try {
-                    jsonData.put("candidate_id", temp.get(i).getCandidateId());
-                    jsonData.put("activity_status_id", temp.get(i).getStatusId());
-                    jsonData.put("reason", temp.get(i).getReason());
-                    jsonData.put("date", temp.get(i).getDateTime());
-                    jsonData.put("remarks", temp.get(i).getRemarks());
-                    jsonData.put("latitude", temp.get(i).getLatitude());
-                    jsonData.put("longitude", temp.get(i).getLongitude());
-                    jsonData.put("device_date", temp.get(i).getTimestamp());
-                    jsonArray.add(jsonData.toString());
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
 
-        }
-        prepareXml(xmlPath,waterModels);
-    }
 
     private void prepareXml(String xmlPath, ArrayList<WaterSource> waterModels) {
 //        if (cl.isShowing()) cl.dismiss();
@@ -460,7 +435,7 @@ public class SourceDetailActivity extends AppCompatActivity implements View.OnCl
             case R.id.btn_submit:
                 xmlPath = Utils.getFileName(String.valueOf(prefs.getInt(Keys.PREFS_USER_ID)), "Bulk");
                 createArray();
-                uploadStatusHistory(xmlPath, watersourceModels);
+                prepareXml(xmlPath, watersourceModels);
                 //login();
                 break;
 
@@ -470,9 +445,6 @@ public class SourceDetailActivity extends AppCompatActivity implements View.OnCl
     }
     private void createArray() {
         if (watersourceModels.size() == 0) {
-           /* name.setText("Added: " + etMemberName.getText().toString().trim());
-            name.setVisibility(View.VISIBLE);*/
-            /* ll1.setVisibility(View.GONE);*/
 
             WaterSource waterModel = new WaterSource();
             waterModel.setSourceId(sp.getSelectedItemPosition() < 1 ? "" : sp.getSelectedItem().toString());
