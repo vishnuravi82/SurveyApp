@@ -1,0 +1,591 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/ll"
+        android:layout_alignParentTop="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/card_view_15"
+            >
+
+            <androidx.cardview.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:card_view="http://schemas.android.com/tools"
+                android:id="@+id/cvf1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:background="@color/white"
+                android:elevation="8dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="8dp"
+                card_view:cardBackgroundColor="@android:color/white"
+                card_view:cardCornerRadius="10dp"
+                card_view:cardElevation="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:padding="0dp">
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="20dp"
+                        android:tag="@string/brandon_bold"
+                        android:text="@string/q_landdetails"
+                        android:textAllCaps="true"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="2dp"
+                        android:background="@color/colorPrimary" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:card_view="http://schemas.android.com/tools"
+                android:id="@+id/cv12"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/cvf1"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:background="@color/white"
+                android:elevation="8dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="8dp"
+                card_view:cardBackgroundColor="@android:color/white"
+                card_view:cardCornerRadius="10dp"
+                card_view:cardElevation="8dp">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center"
+                    android:visibility="gone"
+                    android:layout_margin="@dimen/ll_margin"
+                    android:orientation="vertical">
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/label12"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="0dp"
+                        android:tag="@string/brandon_reg"
+
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/label_size" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp">
+
+                        <EditText
+                            android:id="@+id/et12"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"
+                            android:lines="1"
+                            android:tag="@string/brandon_light"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/input_size" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:card_view="http://schemas.android.com/tools"
+                android:id="@+id/cvf2"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/cv12"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:elevation="8dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="8dp"
+                card_view:cardBackgroundColor="@android:color/white"
+                card_view:cardCornerRadius="10dp"
+                card_view:cardElevation="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/ll_margin"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/name"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:text="Added: Athira"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/label_size"
+                        android:visibility="gone" />
+
+
+
+
+                    <LinearLayout
+                        android:id="@+id/ll1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <!-- <androidx.appcompat.widget.AppCompatTextView
+                             android:id="@+id/label21"
+                             android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:layout_marginBottom="0dp"
+                             android:tag="@string/brandon_reg"
+                             android:text="@string/qm_house_income"
+                             android:textColor="@color/black"
+                             android:textSize="@dimen/label_size" />
+
+                         <com.google.android.material.textfield.TextInputLayout
+                             android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:layout_marginTop="0dp">
+
+                             <EditText
+                                 android:id="@+id/et21"
+                                 android:layout_width="match_parent"
+                                 android:layout_height="wrap_content"
+                                 android:inputType="number"
+                                 android:lines="1"
+                                 android:tag="@string/brandon_light"
+                                 android:textColor="@color/black"
+                                 android:textSize="@dimen/input_size" />
+                         </com.google.android.material.textfield.TextInputLayout>
+ -->
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/labelf3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:visibility="gone"
+                            android:layout_marginBottom="0dp"
+                            android:tag="@string/brandon_reg"
+                            android:text="@string/qm_member_name"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/label_size" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:visibility="gone"
+                            android:layout_marginTop="0dp">
+
+                            <EditText
+                                android:id="@+id/et3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="0dp"
+                                android:digits="@string/allowed_char_name"
+                                android:inputType="textCapWords"
+                                android:lines="1"
+                                android:tag="@string/brandon_light"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/input_size" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/labelf1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="0dp"
+                            android:tag="@string/brandon_reg"
+                            android:text="@string/q_landid"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/label_size" />
+
+
+                        <Spinner
+                            android:id="@+id/sp_land"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/spinner_height"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:background="@drawable/spinnerbg"
+                            android:spinnerMode="dropdown" />
+
+
+
+
+
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/labelf5"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginBottom="0dp"
+                            android:tag="@string/brandon_reg"
+                            android:text="@string/q_irigation"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/label_size" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="0dp">
+
+                            <EditText
+                                android:id="@+id/et5"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+
+                                android:background="@color/white"
+                                android:editable="false"
+                                android:tag="@string/brandon_light"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/input_size" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/label6"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginBottom="0dp"
+                            android:tag="@string/brandon_reg"
+                           android:text="@string/q_assignland"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/label_size" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/tl6"
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="0dp">
+
+                            <EditText
+                                android:id="@+id/et6"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/white"
+
+                                android:tag="@string/brandon_light"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/input_size" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/label7"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginBottom="0dp"
+                            android:tag="@string/brandon_reg"
+                            android:text="@string/q_Own"
+
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/label_size" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/tl7"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:layout_marginTop="0dp">
+
+                            <EditText
+                                android:id="@+id/et7"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:digits="@string/allowed_char_email"
+                                android:inputType="textEmailAddress"
+                                android:lines="1"
+                                android:background="@color/white"
+                                android:tag="@string/brandon_light"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/input_size" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/label9"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginBottom="0dp"
+                            android:tag="@string/brandon_reg"
+                            android:visibility="gone"
+                            android:text="@string/h_qualification"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/label_size" />
+
+
+                        <Spinner
+                            android:id="@+id/spinner9"
+                            android:visibility="gone"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/spinner_height"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:background="@drawable/spinnerbg"
+                            android:spinnerMode="dropdown" />
+
+
+                        <!-- <androidx.appcompat.widget.AppCompatTextView
+                             android:id="@+id/label10"
+                             android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:layout_marginTop="15dp"
+                             android:layout_marginBottom="0dp"
+                             android:tag="@string/brandon_reg"
+                             android:text="@string/qm_member_relation"
+                             android:textColor="@color/black"
+                             android:textSize="@dimen/label_size" />
+
+
+                         <Spinner
+                             android:id="@+id/spinner10"
+                             android:layout_width="match_parent"
+                             android:layout_height="@dimen/spinner_height"
+                             android:layout_marginStart="8dp"
+                             android:layout_marginTop="8dp"
+                             android:layout_marginEnd="8dp"
+                             android:layout_marginBottom="8dp"
+                             android:background="@drawable/spinnerbg"
+                             android:spinnerMode="dropdown" />
+ -->
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/label11"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginBottom="0dp"
+                            android:tag="@string/brandon_reg"
+                            android:text="@string/q_leasedin"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/label_size" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="0dp">
+
+                            <EditText
+                                android:id="@+id/et11"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+
+                                android:background="@color/white"
+                                android:lines="1"
+                                android:tag="@string/brandon_light"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/input_size" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/label21"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="0dp"
+                            android:tag="@string/brandon_reg"
+                            android:text="@string/q_leasedout"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/label_size" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="0dp">
+
+                            <EditText
+                                android:id="@+id/et21"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/white"
+                                android:lines="1"
+
+                                android:tag="@string/brandon_light"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/input_size" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/labelother"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="0dp"
+                            android:tag="@string/brandon_reg"
+                            android:text="@string/q_others"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/label_size" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="0dp">
+
+                            <EditText
+                                android:id="@+id/et_other22"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/white"
+                                android:lines="1"
+
+                                android:tag="@string/brandon_light"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/input_size" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/label_total22"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="0dp"
+                            android:tag="@string/brandon_reg"
+                            android:text="@string/q_total"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/label_size" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="0dp">
+
+                            <EditText
+                                android:id="@+id/et_total22"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/white"
+                                android:lines="1"
+
+                                android:tag="@string/brandon_light"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/input_size" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:id="@+id/container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/cvf2"
+                android:orientation="vertical" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/add"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/container"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:layout_marginBottom="0dp"
+                android:background="@drawable/edt_bg"
+                android:drawableStart="@drawable/add"
+                android:drawableLeft="@drawable/add"
+                android:drawablePadding="10dp"
+                android:drawableTint="@color/colorPrimaryDark"
+                android:gravity="center_vertical"
+                android:paddingStart="15dp"
+                android:paddingLeft="15dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:tag="@string/brandon_reg"
+                android:text="@string/q_add_land"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/label_size" />
+
+
+        </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <LinearLayout
+        android:id="@+id/ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_save"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_selector"
+            android:gravity="center"
+            android:padding="@dimen/btn_padding"
+            android:tag="@string/brandon_bold"
+            android:text="@string/save_draft"
+            android:textAllCaps="true"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_submit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_selector"
+            android:gravity="center"
+            android:padding="@dimen/btn_padding"
+            android:tag="@string/brandon_bold"
+            android:text="@string/submit"
+            android:textAllCaps="true"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+</RelativeLayout>
