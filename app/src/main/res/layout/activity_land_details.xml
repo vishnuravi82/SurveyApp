@@ -153,7 +153,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="5dp"
-                        android:text="Added: Athira"
+
                         android:textColor="@color/black"
                         android:textSize="@dimen/label_size"
                         android:visibility="gone" />
@@ -193,36 +193,7 @@
                                  android:textSize="@dimen/input_size" />
                          </com.google.android.material.textfield.TextInputLayout>
  -->
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/labelf3"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="15dp"
-                            android:visibility="gone"
-                            android:layout_marginBottom="0dp"
-                            android:tag="@string/brandon_reg"
-                            android:text="@string/qm_member_name"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/label_size" />
 
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:visibility="gone"
-                            android:layout_marginTop="0dp">
-
-                            <EditText
-                                android:id="@+id/et3"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="0dp"
-                                android:digits="@string/allowed_char_name"
-                                android:inputType="textCapWords"
-                                android:lines="1"
-                                android:tag="@string/brandon_light"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/input_size" />
-                        </com.google.android.material.textfield.TextInputLayout>
 
                         <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/labelf1"
@@ -268,12 +239,12 @@
                             android:layout_marginTop="0dp">
 
                             <EditText
-                                android:id="@+id/et5"
+                                android:id="@+id/et5_irrigation"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
 
                                 android:background="@color/white"
-                                android:editable="false"
+
                                 android:tag="@string/brandon_light"
                                 android:textColor="@color/black"
                                 android:textSize="@dimen/input_size" />
@@ -292,14 +263,14 @@
                             android:textSize="@dimen/label_size" />
 
                         <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/tl6"
+                            android:id="@+id/tl_assign_land"
 
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="0dp">
 
                             <EditText
-                                android:id="@+id/et6"
+                                android:id="@+id/et_assign_land"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:background="@color/white"
@@ -330,11 +301,10 @@
                             android:layout_marginTop="0dp">
 
                             <EditText
-                                android:id="@+id/et7"
+                                android:id="@+id/et_passbook"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:digits="@string/allowed_char_email"
-                                android:inputType="textEmailAddress"
+
                                 android:lines="1"
                                 android:background="@color/white"
                                 android:tag="@string/brandon_light"
@@ -345,30 +315,6 @@
 
 
 
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/label9"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="15dp"
-                            android:layout_marginBottom="0dp"
-                            android:tag="@string/brandon_reg"
-                            android:visibility="gone"
-                            android:text="@string/h_qualification"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/label_size" />
-
-
-                        <Spinner
-                            android:id="@+id/spinner9"
-                            android:visibility="gone"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/spinner_height"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginEnd="8dp"
-                            android:layout_marginBottom="8dp"
-                            android:background="@drawable/spinnerbg"
-                            android:spinnerMode="dropdown" />
 
 
                         <!-- <androidx.appcompat.widget.AppCompatTextView
@@ -412,7 +358,7 @@
                             android:layout_marginTop="0dp">
 
                             <EditText
-                                android:id="@+id/et11"
+                                android:id="@+id/et_leased_in"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
 
@@ -438,7 +384,7 @@
                             android:layout_marginTop="0dp">
 
                             <EditText
-                                android:id="@+id/et21"
+                                android:id="@+id/et_leased_out"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:background="@color/white"

@@ -390,14 +390,14 @@ public class SourceDetailActivity extends AppCompatActivity implements View.OnCl
         }
 
 
-        int stage = prefs.getInt(Keys.PREFS_ACTION);
+
 
         Retrofit retrofit = Utils.getClient(getApplicationContext());
         RetrofitConfigInterface retrofitConfigInterface = retrofit.create(RetrofitConfigInterface.class);
         //Call<SubmitCandResponse> call = retrofitConfigInterface.submitCandResponse(Keys.CONST_CLIENT_ID, Keys.CONST_CLIENT_KEY, prefs.getInt(Keys.PREFS_USER_ID), prefs.getInt(Keys.PREFS_ROLE_ID), prefs.getString(Keys.PREFS_LATITUDE), prefs.getString(Keys.PREFS_LONGITUDE), Utils.getCurrentDate(Keys.TIMESTAMP_FORMAT), stage, path, Utils.getVersionCode(this), Build.MODEL, Utils.getDeviceId(this), Build.VERSION.RELEASE);
         Call<SubmitFamily> call = retrofitConfigInterface.submitsourceResponse(Keys.CONST_CLIENT_ID, Keys.CONST_CLIENT_KEY,1,  xmlPath);
         //   Toast.makeText(getApplicationContext(),call.request().toString(),Toast.LENGTH_LONG).show();
-        Log.e("TAG", call.request().toString());
+        Log.e("TAG......", call.request().toString());
 
         call.enqueue(new Callback<SubmitFamily>() {
             @Override
@@ -422,6 +422,7 @@ public class SourceDetailActivity extends AppCompatActivity implements View.OnCl
 
             @Override
             public void onFailure(Call<SubmitFamily> call, Throwable t) {
+                Log.e("hai....",""+t.getMessage());
                 Utils.captureBugReport(getApplicationContext(), Utils.getFileName("BugReport", String.valueOf(prefs.getInt(Keys.PREFS_ACTION)), String.valueOf(prefs.getInt(Keys.PREFS_USER_ID)), Keys.MIME_TYPE_TXT), "Submit Response", t.getMessage());
 
                 try {
